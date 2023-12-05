@@ -21,7 +21,9 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `https://pxapi2-master-cnmm.scb.se/api/v2/:path*`,
+        destination: `https://api.scb.se/OV0104/v2beta/api/v2/:path*`,
+        //destination: `http://pxapi2-master-cnmm.scb.intra/api/v2/:path*`,
+        //https://api.scb.se/OV0104/v2beta/api/v2/tables/
       },
     ]
   },
