@@ -37,6 +37,8 @@ export const VariableSelector = ({ title, required, values, code, onChange }: Va
 
     const [isExpanded, setIsExpanded] = useState(false);
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [searchParam, setSearchParam] = useState<string>("");
+    const filteredValues = values.filter((value) => value.label.toLocaleLowerCase().includes(searchParam.toLocaleLowerCase()))
 
     const updateSelectedIds = (selectedIds: string[]) => {
         setSelectedIds(selectedIds);
@@ -54,7 +56,13 @@ export const VariableSelector = ({ title, required, values, code, onChange }: Va
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}>
-                <MultiSelect values={values} selectedIds={selectedIds} setSelectedIds={updateSelectedIds} /></motion.div>}
+                {values.length > 20 && 
+                    <>
+                        <label htmlFor="filtersearch">Sök</label>                
+                        <input type="text" id="filtersearch" onChange={(e)=> setSearchParam(e.target.value)  }></input> 
+                    </>
+                }    
+                <MultiSelect values={filteredValues} selectedIds={selectedIds} setSelectedIds={updateSelectedIds} /></motion.div>}
         </AnimatePresence>
     </Card>
-}
+}   
