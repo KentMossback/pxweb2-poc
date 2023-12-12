@@ -4,6 +4,18 @@ import { useState } from 'react';
 import { ExpandButton } from './ExpandButton';
 import { MultiSelect } from './MultiSelect';
 import { AnimatePresence, motion } from 'framer-motion';
+import LocalizedStrings from 'react-localization';
+
+const strings = new LocalizedStrings({
+ en:{
+   searchvalue:"Search",
+   mandatory:"Mandatory"     
+ },
+ se: {
+    searchvalue:"Sök",
+    mandatory:"Obligatorisk"   
+ }
+});
 
 
 const Card = styled.div`
@@ -44,13 +56,25 @@ export const VariableSelector = ({ title, required, values, code, onChange }: Va
         setSelectedIds(selectedIds);
         onChange(code, selectedIds)
     }
+
+    function sayHello() {       
+        strings.setLanguage('sv');
+        // this.setState({});
+        alert('You clicked me!');
+      }
+    
     return <Card>
+        <button onClick={sayHello}>Default</button>;
+        <button onClick={() => strings.setLanguage('sv')}>Svenska</button>
+        <button onClick={() => strings.setLanguage('en')}>Engelska</button>
         <TitleRow>
             <StyledTitle>{title}</StyledTitle>
             <ExpandButton isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)} />
         </TitleRow>
+    
+
         <Tag roundedStyle="light">Valt {selectedIds.length} av {values.length}</Tag>
-        {required && <Tag roundedStyle="heavy">Obligatorisk</Tag>}
+        {required && <Tag roundedStyle="heavy">{strings.mandatory}</Tag>}
         <AnimatePresence>
             {isExpanded && <motion.div
                 initial={{ opacity: 0 }}
@@ -58,7 +82,7 @@ export const VariableSelector = ({ title, required, values, code, onChange }: Va
                 exit={{ opacity: 0 }}>
                 {values.length > 20 && 
                     <>
-                        <label htmlFor="filtersearch">Sök</label>                
+                        <label htmlFor="filtersearch">{strings.searchvalue}</label>                
                         <input type="text" id="filtersearch" onChange={(e)=> setSearchParam(e.target.value)  }></input> 
                     </>
                 }    
