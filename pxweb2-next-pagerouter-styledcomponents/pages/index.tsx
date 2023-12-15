@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import useTranslation from "../components/Translations";
+import LanguageContextProvider from "../components/LanguageContext";
 
 const StyledPage = styled.div`
   .page {
@@ -11,14 +13,16 @@ export function Index() {
    *
    * Note: The corresponding styles are in the ./index.styled-components file.
    */
+  const translation = useTranslation();
   return (
     <StyledPage>
+      <LanguageContextProvider>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
             <h1>
-              <span> Hello there, </span>
-              Welcome pxweb2-next-pagerouter-styledcomponents 👋
+              <span> {translation.formatString(translation.welcomeMessage)} </span>
+              Welcome pxweb2-next-pagerouter-styledcomponents 👋              
             </h1>
           </div>
 
@@ -450,6 +454,7 @@ export function Index() {
           </p>
         </div>
       </div>
+      </LanguageContextProvider>
     </StyledPage>
   );
 }
