@@ -10,7 +10,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
     <>
     <LanguageContextProvider>
       <Head>
-        <title>Welcome my friend!</title>
+        <title>PxWeb2-POC</title>
       </Head>
       <main className="app">
         <Component {...pageProps} />

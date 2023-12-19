@@ -11,7 +11,7 @@ const LanguageHandler: FC = () => {
   return (
     <select value={language} onChange={handleLanguageChange}>
       <option value="en">En- English</option>
-      <option value="sv">Sv- Svenska</option>
+      <option value="sv">Sv- Svenska</option>      
     </select>
   );
 };
