@@ -5,6 +5,9 @@ import { VariableSelector } from "@pxweb2-poc/pxweb2-ui";
 import { components } from '../../api/schema';
 import styled from "styled-components";
 import { DataView } from "../../components/DataView";
+import useTranslation from "../../components/Translations";
+import { useLanguageContext } from "../../components/LanguageContext";
+import { Header } from "../../components/Header";
 
 type RegularVariable = components["schemas"]["RegularVariable"];
 
@@ -31,18 +34,26 @@ const TablePage = () => {
 
     const [valueCodes, setValueCodes] = useState<{ [key: string]: string[]; }>({});
 
+    const translation = useTranslation();
+    
+    const { language } = useLanguageContext();
+
     const setValueCode = (variableCode: string, valueCode: string[]) => {
         setValueCodes({ ...valueCodes, [variableCode]: valueCode });
     }
 
     console.log(valueCodes);
 
+    console.log(language);
+
     useEffect(() => {
 
         const loadMetaData = async () => {
             if (query.id) {
                 const idAsString = Array.isArray(query.id) ? query.id[0] : query.id;
-                const { data } = await getTableMetaData(idAsString)
+                const langAsString = "sv";
+                //console.log(lange)
+                const { data } = await getTableMetaData(idAsString,langAsString)
                 setMetadata(data as SuccesResponse);
             }
         }
@@ -52,6 +63,7 @@ const TablePage = () => {
     return <>
         {/* <button onClick={() => setTheme('dark')}>Dark</button>
         <button onClick={() => setTheme('light')}>Light</button> */}
+        <Header></Header>
         <PageWrapper>
             <VariableSelectorBox>
                 {/* TODO: Kolla type på variabel istället... */}

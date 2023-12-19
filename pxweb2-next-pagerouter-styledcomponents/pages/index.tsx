@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import useTranslation from "../components/Translations";
 import LanguageContextProvider from "../components/LanguageContext";
+ import { createContext, useState } from 'react';
+
+//const LangContext = createContext('en');
 
 const StyledPage = styled.div`
   .page {
@@ -14,9 +17,11 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.styled-components file.
    */
   const translation = useTranslation();
+  
+  //const [lang, setLang ] = useState('en');
+
   return (
-    <StyledPage>
-      <LanguageContextProvider>
+     <StyledPage>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
@@ -454,8 +459,7 @@ export function Index() {
           </p>
         </div>
       </div>
-      </LanguageContextProvider>
-    </StyledPage>
+    </StyledPage>    
   );
 }
 

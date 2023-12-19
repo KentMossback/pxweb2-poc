@@ -1,5 +1,6 @@
 export default  {
     searchvalue:"Search",
     mandatory:"Mandatory",
-    welcomeMessage:"Hello there"     
+    welcomeMessage:"Hello there",
+    changeLanguage:"Change language"     
 };
