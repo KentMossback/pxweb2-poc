@@ -6,11 +6,10 @@ import LanguageHandler from "./LanguageHandler";
 export const Header = () => {
 //    const { theme } = useContext(AppContext);
 const translation = useTranslation();
-    
     return (
     <div>
     <span>{translation.changeLanguage}</span>
-    <LanguageHandler />
+        <LanguageHandler />
   </div>)
 }
 

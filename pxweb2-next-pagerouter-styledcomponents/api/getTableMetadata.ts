@@ -6,9 +6,10 @@ export type QueryType = paths["/tables/{id}/metadata"]["get"]["parameters"]["que
 
 const { GET } = createClient<paths>({ baseUrl: "/api" });
 
-export const getTableMetaData = (id: string, query?: QueryType) => GET("/tables/{id}/metadata?lang=sv", {
+
+export const getTableMetaData = (id: string, query?: QueryType) => GET("/tables/{id}/metadata", {
     params: {
-        query,
+        query: {lang: query },
         path: {
             id
         }

@@ -51,14 +51,13 @@ const TablePage = () => {
         const loadMetaData = async () => {
             if (query.id) {
                 const idAsString = Array.isArray(query.id) ? query.id[0] : query.id;
-                const langAsString = "sv";
-                //console.log(lange)
-                const { data } = await getTableMetaData(idAsString,langAsString)
+                //console.log(lang)
+                const { data } = await getTableMetaData(idAsString,language)
                 setMetadata(data as SuccesResponse);
             }
         }
         loadMetaData();
-    }, [query.id])
+    }, [query.id,language])
 
     return <>
         {/* <button onClick={() => setTheme('dark')}>Dark</button>

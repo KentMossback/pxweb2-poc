@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getData } from "../api/getData"
 import { TableView } from "./TableView";
+import { useLanguageContext } from "../components/LanguageContext";
 
 export type MyDataType = {
     columns: Column[];
@@ -36,16 +37,18 @@ export const DataView = ({ id, valueCodes, displayType = "chart" }: DataViewProp
 
     const [data, setData] = useState<MyDataType>()
 
+    const { language } = useLanguageContext();
+
     useEffect(() => {
         const loadData = async () => {
             if (id) {
-                const data = await getData(id, valueCodes);
+                const data = await getData(id, valueCodes, language);
                 setData(data as unknown as MyDataType);
             }
         }
 
         loadData();
-    }, [id, valueCodes])
+    }, [id, valueCodes, language])
 
 
 
