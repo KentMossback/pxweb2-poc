@@ -42,10 +42,11 @@ type VariableSelectorType = {
     required: boolean,
     values: { label: string, code: string }[],
     code: string,
+    lang: string,
     onChange: (variableCode: string, valueCode: string[]) => void;
 }
 
-export const VariableSelector = ({ title, required, values, code, onChange }: VariableSelectorType) => {
+export const VariableSelector = ({ title, required, values, code, lang, onChange }: VariableSelectorType) => {
 
     const [isExpanded, setIsExpanded] = useState(false);
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -57,16 +58,16 @@ export const VariableSelector = ({ title, required, values, code, onChange }: Va
         onChange(code, selectedIds)
     }
 
-    function sayHello() {       
-        strings.setLanguage('sv');
-        // this.setState({});
-        alert('You clicked me!');
-      }
+    // function sayHello() {       
+    //     strings.setLanguage('sv');
+    //     // this.setState({});
+    //     alert('You clicked me!');
+    //   }
     
     return <Card>
-        <button onClick={sayHello}>Default</button>;
+        {/* <button onClick={sayHello}>Default</button>;
         <button onClick={() => strings.setLanguage('sv')}>Svenska</button>
-        <button onClick={() => strings.setLanguage('en')}>Engelska</button>
+        <button onClick={() => strings.setLanguage('en')}>Engelska</button> */}
         <TitleRow>
             <StyledTitle>{title}</StyledTitle>
             <ExpandButton isExpanded={isExpanded} onClick={() => setIsExpanded(!isExpanded)} />

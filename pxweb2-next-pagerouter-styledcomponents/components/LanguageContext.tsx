@@ -9,7 +9,7 @@ interface LanguageContextProps {
 const LanguageContext = React.createContext<LanguageContextProps | undefined>(undefined);
 export const useLanguageContext = () => useContext(LanguageContext);
 
-const LanguageContextProvider: FC = ({ children }) => {
+const LanguageContextProvider: FC<LanguageContextProps> = ({ children }) => {
   const [language, setLanguage] = useState<string>("sv");
 
   const changeLanguage = (lang: string) => {

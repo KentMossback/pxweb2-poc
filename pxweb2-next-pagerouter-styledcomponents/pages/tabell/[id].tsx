@@ -5,7 +5,6 @@ import { VariableSelector } from "@pxweb2-poc/pxweb2-ui";
 import { components } from '../../api/schema';
 import styled from "styled-components";
 import { DataView } from "../../components/DataView";
-import useTranslation from "../../components/Translations";
 import { useLanguageContext } from "../../components/LanguageContext";
 import { Header } from "../../components/Header";
 
@@ -33,9 +32,7 @@ const TablePage = () => {
     const [metadata, setMetadata] = useState<SuccesResponse>()
 
     const [valueCodes, setValueCodes] = useState<{ [key: string]: string[]; }>({});
-
-    const translation = useTranslation();
-    
+        
     const { language } = useLanguageContext();
 
     const setValueCode = (variableCode: string, valueCode: string[]) => {
@@ -74,6 +71,7 @@ const TablePage = () => {
                             code={regularVariable.id}
                             title={regularVariable.label}
                             required={!regularVariable.elimination}
+                            lang={language}
                             values={
                                 regularVariable.values.map(value => ({ label: value.label, code: value.code }))
                             }
