@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npx nx serve pxweb2-next-pagerouter-styledcomponents",
-    "run": "npx nx run pxweb2-next-pagerouter-styledcomponents:build", 
+    "build": "npx nx run pxweb2-next-pagerouter-styledcomponents:build",
     "storybook": "npx nx run pxweb2-ui:storybook",
     "generate-types": "npx openapi-typescript https://raw.githubusercontent.com/statisticssweden/PxApiSpecs/master/PxAPI-2.yml -o ./pxweb2-next-pagerouter-styledcomponents/api/schema.d.ts"
   },

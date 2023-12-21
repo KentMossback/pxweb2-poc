@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getData } from "../api/getData"
 import { TableView } from "./TableView";
-import { useLanguageContext } from "./LanguageContext";
+import LanguageContextProvider, { useLanguageContext } from "./LanguageContext";
 
 export type MyDataType = {
     columns: Column[];
